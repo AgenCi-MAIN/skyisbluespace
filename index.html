@@ -87,7 +87,7 @@ h2 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;c
 .card.wide{grid-column:1/-1}
 @media(min-width:1000px){.card.wide{grid-column:span 2}}
 .k1{--k:var(--c)}.k2{--k:var(--a)}.k3{--k:var(--b)}.k4{--k:var(--d)}.k5{--k:var(--e)}
-.fail .tag::after{content:" · failure, published";color:var(--mute)}
+.fail .tag::after{content:" · failed";color:var(--mute)}
 /* LADDER */
 .ladder{display:grid;grid-template-columns:1fr;gap:10px;margin-top:40px;counter-reset:s}
 @media(min-width:800px){.ladder{grid-template-columns:repeat(4,1fr)}}
@@ -196,20 +196,20 @@ footer a{color:#b9bde0}
 
     <article class="card k3 fail rv">
       <span class="tag mono">LoRA</span>
-      <span class="big">0.163<small> vs 0.081</small></span>
+      <span class="big">2×</span>
       <h3>The metric doubled. The model didn't beat base.</h3>
-      <p>20 manual spot-checks caught the fine-tune confidently inventing numbers. The base model refused honestly. Verdict: <b>LoRA does NOT beat base.</b></p>
+      <p>Auto-score went <b>0.081 → 0.163</b>. Then 20 manual spot-checks caught the fine-tune confidently inventing numbers. The base model refused honestly. Verdict: <b>LoRA does NOT beat base.</b></p>
     </article>
 
     <article class="card k2 fail rv">
-      <span class="tag mono">Mean-reversion fix</span>
+      <span class="tag mono">Mean-rev fix</span>
       <span class="big">−8.67%</span>
       <h3>The fix made it worse.</h3>
       <p>0 of 222 profitable, against a +8.02% baseline. The notes never mentioned it; the raw data did. So now it's here.</p>
     </article>
 
     <article class="card k4 fail rv">
-      <span class="tag mono">QKITTY-SOL-01 · real QPU</span>
+      <span class="tag mono">QKITTY-SOL-01</span>
       <span class="big">−$48.65</span>
       <h3>Quantum randomness: no edge.</h3>
       <p>158 paper trades timed by a real quantum processor. <b>No edge.</b> Published anyway.</p>
@@ -235,7 +235,7 @@ footer a{color:#b9bde0}
   </div>
 
   <figure class="rv">
-    <img src="media/governance.jpg" alt="Diagram: agent governance and the 12-stage lifecycle, including the evidence promotion ladder" loading="lazy" width="1400" height="955">
+    <img src="media/governance.jpg" alt="Diagram: agent governance and the 12-stage lifecycle, including the evidence promotion ladder" width="1400" height="955">
     <figcaption class="mono">The governance design: owner gate, builder can't approve its own work, read-only inspector, evidence ladder.</figcaption>
   </figure>
 </section>
