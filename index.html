@@ -448,8 +448,8 @@ footer a{color:var(--mute)}
   // sticky CTA after the hero
   var s=document.getElementById('sticky'),h=document.querySelector('.hero'),fin=document.querySelector('.final');
   if(io&&s){var heroOut=false,finIn=false;function upd(){s.classList.toggle('show',heroOut&&!finIn)}
-    new IntersectionObserver(function(es){heroOut=!es[0].isIntersecting;upd()},{threshold:0.05}).observe(h);
-    new IntersectionObserver(function(es){finIn=es[0].isIntersecting;upd()}).observe(fin);}
+    new IntersectionObserver(function(es){heroOut=!es[es.length-1].isIntersecting;upd()},{threshold:0.05}).observe(h);
+    new IntersectionObserver(function(es){finIn=es[es.length-1].isIntersecting;upd()}).observe(fin);}
 })();
 </script>
 </body>
