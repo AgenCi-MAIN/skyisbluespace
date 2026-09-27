@@ -61,7 +61,9 @@ h1{font-weight:400;font-size:clamp(64px,17vw,208px);line-height:.9;letter-spacin
 .follow::before{content:"";position:absolute;inset:-3px;border-radius:19px;background:var(--grad);z-index:-1;filter:blur(10px);opacity:.9;animation:hue 6s linear infinite}
 @keyframes hue{to{filter:blur(10px) hue-rotate(360deg)}}
 .follow:hover{transform:translateY(-2px) scale(1.02)}
-.follow svg{width:22px;height:22px}
+.follow svg{width:22px;height:22px;flex:none}
+.follow{white-space:nowrap}
+@media(max-width:480px){.follow{padding:17px 22px;font-size:17px;gap:10px}.kicker{letter-spacing:.18em;font-size:10px}.top .live span{display:none}.top{font-size:11px}}
 .sub{font-size:13px;color:var(--mute)}
 .sub a{color:#cfd3f5;text-underline-offset:3px}
 .scroll{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.3em;color:var(--mute);text-decoration:none}
@@ -134,7 +136,7 @@ footer a{color:#b9bde0}
   </video>
   <div class="top mono">
     <b><img src="media/rook.png" alt="Rook avatar" width="30" height="30">Shawn &amp; Rook ♜</b>
-    <span class="live"><i></i>building in public</span>
+    <span class="live"><i></i><span>building in public</span></span>
   </div>
   <div>
     <span class="kicker mono">♜ Real QPUs · Paper money · AI agents</span>
