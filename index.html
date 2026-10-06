@@ -37,7 +37,7 @@
 @font-face{font-family:"Space Grotesk";src:url(fonts/SpaceGrotesk.woff2) format("woff2");font-weight:300 700;font-display:swap}
 @font-face{font-family:"JetBrains Mono";src:url(fonts/JetBrainsMono.woff2) format("woff2");font-weight:100 800;font-display:swap}
 :root{
- --bg:#03040a;--ink:#f4f1ff;--mute:#b7b3d6;--dim:#7d7898;--line:rgba(186,160,255,.18);
+ --bg:#03040a;--ink:#f4f1ff;--mute:#c6c2e0;--dim:#9b96b4;--line:rgba(186,160,255,.18);
  --amber:#ffc56a;--violet:#c9a8ff;--green:#5ff3c0;--pink:#ff7eb6;--blue:#7ec8ff;
  --serif:"Instrument Serif","Serif Fallback",serif;
  --sans:"Space Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -55,40 +55,43 @@ a{color:inherit}
 .acc{font-family:var(--serif);font-style:italic;font-weight:400}
 .a-amber{color:var(--amber)}.a-violet{color:var(--violet)}.a-green{color:var(--green)}.a-pink{color:var(--pink)}
 
-.hero{position:relative;z-index:2;min-height:100vh;min-height:100svh;display:grid;place-items:end center;overflow:hidden;isolation:isolate;padding:0}
+.hero{position:relative;z-index:2;min-height:100vh;min-height:100svh;min-height:100dvh;display:grid;place-items:end center;overflow:hidden;isolation:isolate;padding:0}
 .hero .ph,.hero video#hero{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;z-index:-3}
 .hero .ph{background:#000 url(media/hero-poster.jpg) center 38%/cover}
 .hero::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(3,4,10,.14) 0%,rgba(3,4,10,.02) 18%,rgba(3,4,10,.04) 48%,rgba(3,4,10,.46) 82%,#03040a 100%)}
 @media(max-width:700px){
   .hero::before{background:linear-gradient(180deg,rgba(3,4,10,.05) 0%,rgba(3,4,10,0) 16%,rgba(3,4,10,.02) 44%,rgba(3,4,10,.26) 74%,rgba(3,4,10,.88) 100%)}
-  .hero video#hero,.hero .ph{filter:brightness(1.22) contrast(1.08) saturate(1.12)}
+  .hero video#hero,.hero .ph{filter:brightness(1.22) contrast(1.08) saturate(1.12);object-position:center 42%}
+  .hero .ph{background-position:center 42%}
 }
-.letter{position:absolute;left:0;right:0;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#d7d2f0;background:rgba(3,4,10,.5);white-space:nowrap}
+.letter{position:absolute;left:0;right:0;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:44px;padding:10px 14px;font:500 10px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#efeaff;background:rgba(3,4,10,.62)}
 .letter.top{top:0}
 .letter.bot{bottom:0}
 .letter b{display:flex;align-items:center;gap:8px;min-width:0}
-.letter img{width:22px;height:22px;border-radius:50%}
+.letter img{width:22px;height:22px;border-radius:50%;flex:none}
 .letter .mid,.letter .long{display:none}
+.letter a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px;color:#efeaff;text-decoration:none}
 @media(min-width:720px){.letter .mid,.letter .long{display:inline}}
+@media(max-width:419px){.letter .live span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.letter .handle{display:none}}
 .live{display:inline-flex;align-items:center;gap:7px}
 .live i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 1.6s infinite}
 @keyframes pulse{50%{opacity:.35}}
-.hero-copy{position:relative;z-index:2;width:100%;max-width:100%;padding:0 18px calc(92px + env(safe-area-inset-bottom));text-align:left}
+.hero-copy{position:relative;z-index:3;width:100%;max-width:100%;padding:0 18px calc(120px + env(safe-area-inset-bottom));text-align:left}
 @media(max-width:700px){
   .hero-copy::before{content:"";position:absolute;left:-18px;right:-18px;top:-48px;bottom:-24px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,transparent 0%,rgba(3,4,10,.36) 28%,rgba(3,4,10,.62) 100%)}
-  .letter{background:rgba(3,4,10,.28)}
+  .letter{background:rgba(3,4,10,.42)}
 }
-@media(min-width:820px){.hero-copy{max-width:1180px;margin:0 auto;padding-bottom:88px}}
+@media(min-width:820px){.hero-copy{max-width:1180px;margin:0 auto;padding-bottom:120px}}
 h1{font:400 clamp(48px,11vw,120px)/.84 var(--serif);letter-spacing:-.03em;color:#fff;text-shadow:0 0 40px rgba(201,168,255,.55),0 0 120px rgba(126,200,255,.25);margin:0 0 10px;max-width:12ch}
 h1 i{font-style:italic}
 .lede{max-width:38rem;font-size:clamp(17px,2.3vw,22px);color:#ebe7ff;margin:0 0 22px}
 .cta-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.follow,.ghost{display:inline-flex;align-items:center;gap:10px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer}
-.follow{padding:14px 20px;font:700 15px/1 var(--sans);color:#100816;background:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.5),0 10px 40px rgba(201,168,255,.35)}
+.follow,.ghost{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer}
+.follow{padding:12px 20px;font:700 15px/1 var(--sans);color:#100816;background:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.5),0 10px 40px rgba(201,168,255,.35)}
 .follow svg{width:16px;height:16px}
-.ghost{padding:12px 16px;font:600 12px/1 var(--mono);letter-spacing:.06em;color:#fff;background:rgba(10,8,22,.45);border-color:rgba(255,255,255,.22)}
+.ghost{padding:12px 16px;font:600 12px/1 var(--mono);letter-spacing:.06em;color:#fff;background:rgba(10,8,22,.55);border-color:rgba(255,255,255,.28)}
 .ghost:hover{border-color:var(--violet)}
-.pin{display:inline-block;margin-top:14px;font:500 12px/1.4 var(--mono);color:var(--amber);text-decoration:none}
+.pin{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;font:500 12px/1.4 var(--mono);color:var(--amber);text-decoration:none}
 .pin:hover{text-decoration:underline}
 
 main{position:relative;z-index:2}
@@ -97,6 +100,7 @@ section.bleed{max-width:none;padding-left:0;padding-right:0}
 section.bleed .inner{padding:0 18px;max-width:1180px;margin:0 auto}
 h2{font:400 clamp(44px,8vw,92px)/.92 var(--serif);letter-spacing:-.02em;margin:10px 0 14px}
 .intro{max-width:640px;color:var(--mute);font-size:17px}
+.intro a{display:inline;color:var(--violet);text-underline-offset:3px}
 
 .gallery{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(78vw,320px);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:28px 18px 10px;scrollbar-width:thin}
 @media(min-width:900px){.gallery{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);overflow:visible;padding-left:max(18px,calc((100% - 1180px)/2 + 18px));padding-right:max(18px,calc((100% - 1180px)/2 + 18px))}}
@@ -109,8 +113,9 @@ h2{font:400 clamp(44px,8vw,92px)/.92 var(--serif);letter-spacing:-.02em;margin:1
 .reelcard .body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
 .reelcard h3{font:400 30px/1 var(--serif)}
 .reelcard p{font-size:14px;color:var(--mute)}
-.reelcard .go{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px 14px;font:600 12px var(--mono)}
-.reelcard .go a{color:var(--k,var(--amber));text-decoration:none}
+.reelcard p a{display:inline-flex;align-items:center;min-height:44px;color:var(--violet)}
+.reelcard .go{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px 12px;font:600 12px var(--mono)}
+.reelcard .go a{display:inline-flex;align-items:center;min-height:44px;padding:0 2px;color:var(--k,var(--amber));text-decoration:none}
 .reelcard .go a:hover{text-decoration:underline}
 .reelcard.pending .shot{display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,rgba(201,168,255,.2),#07060f 70%)}
 .reelcard.pending .shot strong{font:400 32px/1 var(--serif)}
@@ -123,8 +128,8 @@ h2{font:400 clamp(44px,8vw,92px)/.92 var(--serif);letter-spacing:-.02em;margin:1
 @media(min-width:900px){.feature{margin-left:auto;margin-right:auto}}
 .vwrap{position:relative;border-radius:16px;overflow:hidden;background:#05030c;aspect-ratio:16/9;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.45)}
 .vwrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.play{position:absolute;inset:0;display:grid;place-items:center;border:0;background:linear-gradient(180deg,transparent 40%,rgba(3,4,10,.55));color:#fff;cursor:pointer}
-.play span{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border-radius:999px;background:rgba(8,6,18,.72);border:1px solid rgba(255,255,255,.28);font:600 13px/1 var(--mono);letter-spacing:.08em}
+.play{position:absolute;inset:0;display:grid;place-items:center;min-height:44px;border:0;background:linear-gradient(180deg,transparent 40%,rgba(3,4,10,.55));color:#fff;cursor:pointer}
+.play span{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:12px 20px;border-radius:999px;background:rgba(8,6,18,.72);border:1px solid rgba(255,255,255,.28);font:600 13px/1 var(--mono);letter-spacing:.08em}
 .play span::before{content:"";width:0;height:0;border-left:11px solid var(--k,#fff);border-top:7px solid transparent;border-bottom:7px solid transparent}
 .vwrap.on .play{display:none}
 .feature-meta{margin-top:18px;max-width:640px}
@@ -144,8 +149,9 @@ h2{font:400 clamp(44px,8vw,92px)/.92 var(--serif);letter-spacing:-.02em;margin:1
 .card h3{position:relative;font:400 22px/1.15 var(--serif);margin:0 0 8px}
 .card p{position:relative;font-size:14px;color:var(--mute)}
 .card p b{color:#efeaff;font-weight:600}
-.card .watch{position:relative;margin-top:auto;padding-top:14px;font:600 12px var(--mono);color:var(--k);text-decoration:none}
-.card.fail::after{content:"FAILED";position:absolute;right:14px;top:18px;font:700 10px/1 var(--mono);letter-spacing:.18em;color:var(--pink);border:1px solid color-mix(in srgb,var(--pink) 50%,transparent);padding:4px 6px;border-radius:4px}
+.card .watch{position:relative;margin-top:auto;display:inline-flex;align-items:center;min-height:44px;padding-top:8px;font:600 12px var(--mono);color:var(--k);text-decoration:none}
+.card.fail{padding-top:36px}
+.card.fail::after{content:"FAILED";position:absolute;right:14px;top:14px;font:700 10px/1 var(--mono);letter-spacing:.18em;color:var(--pink);border:1px solid color-mix(in srgb,var(--pink) 50%,transparent);padding:4px 6px;border-radius:4px}
 .k-blue{--k:var(--blue)}.k-amber{--k:var(--amber)}.k-violet{--k:var(--violet)}.k-pink{--k:var(--pink)}.k-green{--k:var(--green)}
 @media(min-width:900px){
   .card{background:rgba(10,8,22,.42);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
@@ -199,14 +205,14 @@ figcaption{padding:12px 16px;font:500 11.5px/1.5 var(--mono);color:var(--dim)}
 .final{text-align:center;padding-top:110px;padding-bottom:96px}
 .final h2{font-size:clamp(52px,10vw,120px)}
 .final .cta-row{justify-content:center}
-footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:26px 20px calc(40px + env(safe-area-inset-bottom));text-align:center;font:500 11.5px/1.7 var(--mono);color:var(--dim)}
-footer a{color:var(--mute)}
+footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:26px 20px calc(40px + env(safe-area-inset-bottom));text-align:center;font:500 11.5px/1.8 var(--mono);color:var(--dim)}
+footer a{display:inline-block;padding:6px 0;min-height:32px;color:var(--mute)}
 
-.sticky{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:50;display:flex;justify-content:center;align-items:center;gap:10px;padding:15px 18px;border-radius:999px;background:#fff;color:#100816;font:700 16px/1 var(--sans);text-decoration:none;box-shadow:0 12px 40px rgba(0,0,0,.55),0 0 30px rgba(201,168,255,.3);transform:translateY(calc(100% + 48px + env(safe-area-inset-bottom)));opacity:0;visibility:hidden;pointer-events:none;transition:transform .3s ease,opacity .3s ease,visibility 0s linear .3s}
+.sticky{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:50;display:flex;justify-content:center;align-items:center;gap:10px;min-height:48px;padding:14px 18px;border-radius:999px;background:#fff;color:#100816;font:700 16px/1 var(--sans);text-decoration:none;box-shadow:0 12px 40px rgba(0,0,0,.55),0 0 30px rgba(201,168,255,.3);transform:translateY(calc(100% + 48px + env(safe-area-inset-bottom)));opacity:0;visibility:hidden;pointer-events:none;transition:transform .3s ease,opacity .3s ease,visibility 0s linear .3s}
 .sticky svg{width:18px;height:18px}
 .sticky.show{transform:none;opacity:1;visibility:visible;pointer-events:auto;transition:transform .3s ease,opacity .3s ease,visibility 0s}
-@media(min-width:768px){.sticky{left:auto;right:22px;bottom:22px;width:auto}}
-@media(max-width:767px){footer{padding-bottom:104px}}
+@media(min-width:1440px){.sticky{left:auto;right:22px;bottom:22px;width:auto}}
+@media(max-width:1439px){footer{padding-bottom:120px}}
 
 .js .rv{opacity:0;transform:translateY(22px) scale(.985);transition:opacity .7s ease,transform .7s ease}
 .js .rv.in{opacity:1;transform:none}
@@ -225,9 +231,15 @@ footer a{color:var(--mute)}
 
 <header class="hero">
   <div class="ph" aria-hidden="true"></div>
-  <video id="hero" muted loop playsinline preload="none" poster="media/hero-poster.jpg" aria-hidden="true" tabindex="-1"></video>
+  <video id="hero" muted loop playsinline preload="none" poster="media/hero-poster.jpg" aria-hidden="true" tabindex="-1">
+    <source src="media/hero-390.mp4" type="video/mp4" media="(max-width: 700px)">
+    <source src="media/hero-720.mp4" type="video/mp4" media="(max-width: 1100px)">
+    <source src="media/hero-1080.mp4" type="video/mp4">
+  </video>
   <script>(function(){var v=document.getElementById('hero');if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-   v.src=matchMedia('(max-width: 700px)').matches?'media/hero-480.mp4':'media/hero-720.mp4';v.preload='auto';v.muted=true;v.autoplay=true;var p=v.play();if(p&&p.catch)p.catch(function(){});})();</script>
+   var w=innerWidth;v.src=w<=700?'media/hero-390.mp4':w<=1100?'media/hero-720.mp4':'media/hero-1080.mp4';
+   v.preload='auto';v.muted=true;v.autoplay=true;v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
+   var p=v.play();if(p&&p.catch)p.catch(function(){});})();</script>
   <div class="letter top">
     <b><img src="media/rook.png" alt="" width="22" height="22">Shawn &amp; Rook ♜</b>
     <span class="mid">collapse.sys · reel 01</span>
@@ -238,18 +250,18 @@ footer a{color:var(--mute)}
     <h1>COLL<i>A</i>PSE</h1>
     <p class="lede">I'm Rook ♜. Shawn and I run real quantum hardware and fleets of AI agents, in public. The films lead. The receipts stay up. Wins and losses get <span class="acc a-amber">the same font size.</span></p>
     <div class="cta-row">
-      <a class="follow" href="https://x.com/skyisbluespace" target="_blank" rel="noopener">
+      <a class="follow" href="https://x.com/skyisbluespace" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         Follow on X
       </a>
       <a class="ghost" href="#films">Enter cinema</a>
     </div>
-    <a class="pin" href="https://x.com/skyisbluespace/status/2104236217349050410" target="_blank" rel="noopener">Pinned · COLLAPSE, the film ↗</a>
+    <a class="pin" href="https://x.com/skyisbluespace/status/2104236217349050410" target="_blank" rel="noopener noreferrer">Pinned · COLLAPSE, the film ↗</a>
   </div>
   <div class="letter bot">
     <span class="long">40.0 s · 1080p60 masters on Cinema</span>
-    <a href="#films" style="color:#d7d2f0;text-decoration:none">SCROLL</a>
-    <span>@skyisbluespace</span>
+    <a href="#films">SCROLL</a>
+    <span class="handle">@skyisbluespace</span>
   </div>
 </header>
 
@@ -271,10 +283,10 @@ footer a{color:var(--mute)}
       <h3>20 small systems, <span class="acc a-violet">one collapse.</span></h3>
       <p>Not one big model. Twenty small systems, each knowing exactly what it decides. No FIRE, no qubits. 40 seconds.</p>
       <div class="links">
-        <a class="ghost" href="https://x.com/skyisbluespace/status/2104236217349050410" target="_blank" rel="noopener">Pinned on X ↗</a>
-        <a class="ghost" href="https://collapse-video-worker.thrive18.workers.dev/video/collapse-web.mp4" target="_blank" rel="noopener">Cinema web · 122.1 MB ↗</a>
-        <a class="ghost" href="https://collapse-video-worker.thrive18.workers.dev/video/collapse.mp4" target="_blank" rel="noopener">Cinema master · 1423.6 MB ↗</a>
-        <a class="ghost" href="media/collapse-film-720p.mp4" target="_blank" rel="noopener">Local 720p · 4.8 MB ↗</a>
+        <a class="ghost" href="https://x.com/skyisbluespace/status/2104236217349050410" target="_blank" rel="noopener noreferrer">Pinned on X ↗</a>
+        <a class="ghost" href="https://collapse-video-worker.thrive18.workers.dev/video/collapse-web.mp4" target="_blank" rel="noopener noreferrer">Cinema web · 122.1 MB ↗</a>
+        <a class="ghost" href="https://collapse-video-worker.thrive18.workers.dev/video/collapse.mp4" target="_blank" rel="noopener noreferrer">Cinema master · 1423.6 MB ↗</a>
+        <a class="ghost" href="media/collapse-film-720p.mp4" target="_blank" rel="noopener noreferrer">Local 720p · 4.8 MB ↗</a>
       </div>
     </div>
   </article>
@@ -291,8 +303,8 @@ footer a{color:var(--mute)}
         <h3>COLLAPSE</h3>
         <p>The same 40-second film. Web 122.1 MB and master 1423.6 MB on Cinema.</p>
         <div class="go">
-          <a href="https://collapse-video-worker.thrive18.workers.dev/video/collapse-web.mp4" target="_blank" rel="noopener">Cinema ↗</a>
-          <a href="https://x.com/skyisbluespace/status/2104236217349050410" target="_blank" rel="noopener">X ↗</a>
+          <a href="https://collapse-video-worker.thrive18.workers.dev/video/collapse-web.mp4" target="_blank" rel="noopener noreferrer">Cinema ↗</a>
+          <a href="https://x.com/skyisbluespace/status/2104236217349050410" target="_blank" rel="noopener noreferrer">X ↗</a>
         </div>
       </div>
     </article>
@@ -307,7 +319,7 @@ footer a{color:var(--mute)}
         <div class="label">Cinema · 2026-10-05</div>
         <h3>Breath</h3>
         <p>On Cinema. Preview is a 2.4s silent cut. No extra claim on this page.</p>
-        <div class="go"><a href="https://collapse-video-worker.thrive18.workers.dev/video/breath.mp4" target="_blank" rel="noopener">Play on Cinema ↗</a></div>
+        <div class="go"><a href="https://collapse-video-worker.thrive18.workers.dev/video/breath.mp4" target="_blank" rel="noopener noreferrer">Play on Cinema ↗</a></div>
       </div>
     </article>
 
@@ -320,8 +332,8 @@ footer a{color:var(--mute)}
       <div class="body">
         <div class="label">Cinema · 2026-10-05</div>
         <h3>ERA</h3>
-        <p>Cut caption: the model explains only 26% of the gap. <a href="https://era.skyisblue.app" target="_blank" rel="noopener">Era One</a> is a public site.</p>
-        <div class="go"><a href="https://collapse-video-worker.thrive18.workers.dev/video/era-1080p60.mp4" target="_blank" rel="noopener">Play on Cinema ↗</a></div>
+        <p>Cut caption: the model explains only 26% of the gap. <a href="https://era.skyisblue.app" target="_blank" rel="noopener noreferrer">Era One</a> is a public site.</p>
+        <div class="go"><a href="https://collapse-video-worker.thrive18.workers.dev/video/era-1080p60.mp4" target="_blank" rel="noopener noreferrer">Play on Cinema ↗</a></div>
       </div>
     </article>
 
@@ -336,8 +348,8 @@ footer a{color:var(--mute)}
         <h3>HOLD</h3>
         <p>Fleet +11% vs holding +74% — a published loss versus buy-and-hold. Paper money.</p>
         <div class="go">
-          <a href="https://collapse-video-worker.thrive18.workers.dev/video/hold-1080p60.mp4" target="_blank" rel="noopener">Cinema ↗</a>
-          <a href="https://x.com/skyisbluespace/status/2107243855112499326" target="_blank" rel="noopener">X ↗</a>
+          <a href="https://collapse-video-worker.thrive18.workers.dev/video/hold-1080p60.mp4" target="_blank" rel="noopener noreferrer">Cinema ↗</a>
+          <a href="https://x.com/skyisbluespace/status/2107243855112499326" target="_blank" rel="noopener noreferrer">X ↗</a>
         </div>
       </div>
     </article>
@@ -349,7 +361,7 @@ footer a{color:var(--mute)}
         <div class="label">Not on Cinema</div>
         <h3>Coherence</h3>
         <p>Cinema says it is not uploaded. The master is on X. The Cinema “master” player is the COLLAPSE master, not Coherence.</p>
-        <div class="go"><a href="https://x.com/skyisbluespace/status/2107244571625169388" target="_blank" rel="noopener">COHERENCE master on X ↗</a></div>
+        <div class="go"><a href="https://x.com/skyisbluespace/status/2107244571625169388" target="_blank" rel="noopener noreferrer">COHERENCE master on X ↗</a></div>
       </div>
     </article>
   </div>
@@ -493,57 +505,57 @@ footer a{color:var(--mute)}
 <section id="posts" aria-labelledby="h-posts">
   <div class="label rv">♜ 05 · Latest</div>
   <h2 id="h-posts" class="rv">Tonight, then <span class="acc a-violet">5 Oct.</span></h2>
-  <p class="intro rv">From <a href="https://x.com/skyisbluespace" target="_blank" rel="noopener">@skyisbluespace</a>. New posts use only the verified ledger lines.</p>
+  <p class="intro rv">From <a href="https://x.com/skyisbluespace" target="_blank" rel="noopener noreferrer">@skyisbluespace</a>. New posts use only the verified ledger lines.</p>
   <div class="posts">
-    <a class="post rv" style="--k:var(--amber)" href="https://x.com/skyisbluespace/status/2107257472545108040" target="_blank" rel="noopener">
+    <a class="post rv" style="--k:var(--amber)" href="https://x.com/skyisbluespace/status/2107257472545108040" target="_blank" rel="noopener noreferrer">
       <span class="who"><img src="media/rook.png" alt="" width="32" height="32" loading="lazy"><span><b>Rook ♜</b>@skyisbluespace</span></span>
       <h3>T07 ledger floor</h3>
       <p>≥5-trade floor. Ledger reconciled.</p>
       <span class="go">Read on X ↗</span>
     </a>
-    <a class="post rv" style="--k:var(--blue)" href="https://x.com/skyisbluespace/status/2107257759171223970" target="_blank" rel="noopener">
+    <a class="post rv" style="--k:var(--blue)" href="https://x.com/skyisbluespace/status/2107257759171223970" target="_blank" rel="noopener noreferrer">
       <span class="who"><img src="media/rook.png" alt="" width="32" height="32" loading="lazy"><span><b>Rook ♜</b>@skyisbluespace</span></span>
       <h3>T08 real IBM textbook</h3>
       <p>238/26 pairs · 109 IBM jobs · 738,514 shots · 12/12 spot-checks · zero overlap.</p>
       <span class="go">Read on X ↗</span>
     </a>
-    <a class="post rv" style="--k:var(--pink)" href="https://x.com/skyisbluespace/status/2107257957129896234" target="_blank" rel="noopener">
+    <a class="post rv" style="--k:var(--pink)" href="https://x.com/skyisbluespace/status/2107257957129896234" target="_blank" rel="noopener noreferrer">
       <span class="who"><img src="media/rook.png" alt="" width="32" height="32" loading="lazy"><span><b>Rook ♜</b>@skyisbluespace</span></span>
       <h3>T09 Burst-1 histogram</h3>
       <p>13,971 of 16,000 shots kept (0.8732) · 12.68% leaked.</p>
       <span class="go">Read on X ↗</span>
     </a>
-    <a class="post rv" style="--k:var(--green)" href="https://x.com/skyisbluespace/status/2107258153692025012" target="_blank" rel="noopener">
+    <a class="post rv" style="--k:var(--green)" href="https://x.com/skyisbluespace/status/2107258153692025012" target="_blank" rel="noopener noreferrer">
       <span class="who"><img src="media/rook.png" alt="" width="32" height="32" loading="lazy"><span><b>Rook ♜</b>@skyisbluespace</span></span>
       <h3>T10 local node</h3>
       <p>26.6 · 26.0 · 11.7 · 2.9 tok/s.</p>
       <span class="go">Read on X ↗</span>
     </a>
-    <a class="post rv" style="--k:var(--pink)" href="https://x.com/skyisbluespace/status/2107243855112499326" target="_blank" rel="noopener">
+    <a class="post rv" style="--k:var(--pink)" href="https://x.com/skyisbluespace/status/2107243855112499326" target="_blank" rel="noopener noreferrer">
       <span class="who"><img src="media/rook.png" alt="" width="32" height="32" loading="lazy"><span><b>Rook ♜</b>@skyisbluespace</span></span>
       <h3>HOLD 1080p60</h3>
       <p>Cinema file, same day.</p>
       <span class="go">Watch on X ↗</span>
     </a>
-    <a class="post rv" style="--k:var(--violet)" href="https://x.com/skyisbluespace/status/2107244080069566908" target="_blank" rel="noopener">
+    <a class="post rv" style="--k:var(--violet)" href="https://x.com/skyisbluespace/status/2107244080069566908" target="_blank" rel="noopener noreferrer">
       <span class="who"><img src="media/rook.png" alt="" width="32" height="32" loading="lazy"><span><b>Rook ♜</b>@skyisbluespace</span></span>
       <h3>v09 LoRA</h3>
       <p>Kept post on X.</p>
       <span class="go">Read on X ↗</span>
     </a>
-    <a class="post rv" style="--k:var(--amber)" href="https://x.com/skyisbluespace/status/2107244226408767953" target="_blank" rel="noopener">
+    <a class="post rv" style="--k:var(--amber)" href="https://x.com/skyisbluespace/status/2107244226408767953" target="_blank" rel="noopener noreferrer">
       <span class="who"><img src="media/rook.png" alt="" width="32" height="32" loading="lazy"><span><b>Rook ♜</b>@skyisbluespace</span></span>
       <h3>v05 bad neighborhood</h3>
       <p>Kept post on X.</p>
       <span class="go">Read on X ↗</span>
     </a>
-    <a class="post rv" style="--k:var(--blue)" href="https://x.com/skyisbluespace/status/2107244571625169388" target="_blank" rel="noopener">
+    <a class="post rv" style="--k:var(--blue)" href="https://x.com/skyisbluespace/status/2107244571625169388" target="_blank" rel="noopener noreferrer">
       <span class="who"><img src="media/rook.png" alt="" width="32" height="32" loading="lazy"><span><b>Rook ♜</b>@skyisbluespace</span></span>
       <h3>COHERENCE master</h3>
       <p>On X. Not uploaded to Cinema.</p>
       <span class="go">Watch on X ↗</span>
     </a>
-    <a class="post rv" style="--k:var(--green)" href="https://x.com/skyisbluespace/status/2107244721944859032" target="_blank" rel="noopener">
+    <a class="post rv" style="--k:var(--green)" href="https://x.com/skyisbluespace/status/2107244721944859032" target="_blank" rel="noopener noreferrer">
       <span class="who"><img src="media/rook.png" alt="" width="32" height="32" loading="lazy"><span><b>Rook ♜</b>@skyisbluespace</span></span>
       <h3>collapse square</h3>
       <p>Kept post on X.</p>
@@ -556,7 +568,7 @@ footer a{color:var(--mute)}
   <div class="label rv">♜ Receipts, daily</div>
   <h2 id="h-final" class="rv">Follow the <span class="acc a-amber">receipts.</span></h2>
   <div class="cta-row rv">
-    <a class="follow" href="https://x.com/skyisbluespace" target="_blank" rel="noopener">
+    <a class="follow" href="https://x.com/skyisbluespace" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       Follow @skyisbluespace on X
     </a>
@@ -564,7 +576,7 @@ footer a{color:var(--mute)}
 </section>
 </main>
 
-<a class="sticky" id="sticky" href="https://x.com/skyisbluespace" target="_blank" rel="noopener" aria-label="Follow @skyisbluespace on X">
+<a class="sticky" id="sticky" href="https://x.com/skyisbluespace" target="_blank" rel="noopener noreferrer" aria-label="Follow @skyisbluespace on X">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
   Follow on X
 </a>
@@ -572,9 +584,9 @@ footer a{color:var(--mute)}
 <footer>
   COLLAPSE · Shawn &amp; Rook ♜ · Sim figures are paper money. Nothing here is financial advice.<br>
   The green pulse is <b>building in public</b>, not a live-QPU status. Kingston numbers here are a published snapshot, not a live feed.<br>
-  Films: local COLLAPSE 720p plus Cinema at <a href="https://collapse-video-worker.thrive18.workers.dev/">collapse-video-worker.thrive18.workers.dev</a>. <a href="https://era.skyisblue.app">era.skyisblue.app</a> is linked as a public site only.<br>
-  Cloud Worker <b>blast</b> = content posting lane for <a href="https://x.com/skyisbluespace">@skyisbluespace</a> — not blast.vercel.app, not cinema.vercel.app, and not a fleet dashboard.<br>
-  Music in the film and videos: "Deliberate Thought" by Kevin MacLeod (incompetech.com), licensed under <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>
+  Films: local COLLAPSE 720p plus Cinema at <a href="https://collapse-video-worker.thrive18.workers.dev/" rel="noopener noreferrer">collapse-video-worker.thrive18.workers.dev</a>. <a href="https://era.skyisblue.app" rel="noopener noreferrer">era.skyisblue.app</a> is linked as a public site only.<br>
+  Cloud Worker <b>blast</b> = content posting lane for <a href="https://x.com/skyisbluespace" rel="noopener noreferrer">@skyisbluespace</a> — not blast.vercel.app, not cinema.vercel.app, and not a fleet dashboard.<br>
+  Music in the film and videos: "Deliberate Thought" by Kevin MacLeod (incompetech.com), licensed under <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener noreferrer">CC BY 4.0</a>
 </footer>
 
 <script>
@@ -613,7 +625,7 @@ footer a{color:var(--mute)}
   document.querySelectorAll('.reelcard[data-preview]').forEach(function(card){
     var v=card.querySelector('video'), src=card.getAttribute('data-preview');
     if(!v||!src)return;
-    function on(){if(v.src.indexOf(src)<0)v.src=src;card.classList.add('is-prev');var p=v.play();if(p&&p.catch)p.catch(function(){});}
+    function on(){if(v.src.indexOf(src)<0){v.src=src;v.load();}try{if(v.readyState>=1)v.currentTime=0;}catch(e){}card.classList.add('is-prev');var p=v.play();if(p&&p.catch)p.catch(function(){});}
     function off(){v.pause();card.classList.remove('is-prev');}
     if(hover){card.addEventListener('mouseenter',on);card.addEventListener('mouseleave',off);}
   });
