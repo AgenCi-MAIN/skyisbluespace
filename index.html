@@ -83,12 +83,11 @@ h1{font:400 clamp(48px,11vw,120px)/.84 var(--serif);letter-spacing:-.03em;color:
 h1 i{font-style:italic}
 .lede{max-width:38rem;font-size:clamp(17px,2.3vw,22px);color:#ebe7ff;margin:0 0 22px}
 .cta-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.follow,.sound,.ghost{display:inline-flex;align-items:center;gap:10px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer}
+.follow,.ghost{display:inline-flex;align-items:center;gap:10px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer}
 .follow{padding:14px 20px;font:700 15px/1 var(--sans);color:#100816;background:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.5),0 10px 40px rgba(201,168,255,.35)}
 .follow svg{width:16px;height:16px}
-.sound,.ghost{padding:12px 16px;font:600 12px/1 var(--mono);letter-spacing:.06em;color:#fff;background:rgba(10,8,22,.45);border-color:rgba(255,255,255,.22)}
-.sound.on{border-color:var(--amber);color:var(--amber)}
-.ghost:hover,.sound:hover{border-color:var(--violet)}
+.ghost{padding:12px 16px;font:600 12px/1 var(--mono);letter-spacing:.06em;color:#fff;background:rgba(10,8,22,.45);border-color:rgba(255,255,255,.22)}
+.ghost:hover{border-color:var(--violet)}
 .pin{display:inline-block;margin-top:14px;font:500 12px/1.4 var(--mono);color:var(--amber);text-decoration:none}
 .pin:hover{text-decoration:underline}
 
@@ -243,7 +242,6 @@ footer a{color:var(--mute)}
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         Follow on X
       </a>
-      <button class="sound" id="hsound" type="button">Tap for sound</button>
       <a class="ghost" href="#films">Enter cinema</a>
     </div>
     <a class="pin" href="https://x.com/skyisbluespace/status/2104236217349050410" target="_blank" rel="noopener">Pinned · COLLAPSE, the film ↗</a>
@@ -619,16 +617,6 @@ footer a{color:var(--mute)}
     function off(){v.pause();card.classList.remove('is-prev');}
     if(hover){card.addEventListener('mouseenter',on);card.addEventListener('mouseleave',off);}
   });
-
-  var sound=document.getElementById('hsound'),heroVid=document.getElementById('hero');
-  if(sound&&heroVid){
-    sound.addEventListener('click',function(){
-      heroVid.muted=!heroVid.muted;
-      if(!heroVid.muted){var p=heroVid.play();if(p&&p.catch)p.catch(function(){});}
-      sound.classList.toggle('on',!heroVid.muted);
-      sound.textContent=heroVid.muted?'Tap for sound':'Sound on';
-    });
-  }
 
   var s=document.getElementById('sticky'),h=document.querySelector('.hero'),fin=document.querySelector('.final');
   if(io&&s){var heroOut=false,finIn=false;function upd(){s.classList.toggle('show',heroOut&&!finIn)}
