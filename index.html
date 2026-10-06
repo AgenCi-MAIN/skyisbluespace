@@ -58,14 +58,14 @@ a{color:inherit}
 .hero{position:relative;z-index:2;min-height:100vh;min-height:100svh;display:grid;place-items:end center;overflow:hidden;isolation:isolate;padding:0}
 .hero .ph,.hero video#hero{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3}
 .hero .ph{background:#000 url(media/poster.jpg) center/cover}
-.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:
- linear-gradient(180deg,#03040a 0%,rgba(3,4,10,.15) 18%,rgba(3,4,10,.08) 48%,rgba(3,4,10,.55) 72%,#03040a 100%),
- radial-gradient(70% 50% at 50% 40%,transparent,rgba(3,4,10,.45))}
-.letter{position:absolute;left:0;right:0;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:10px 16px;font:500 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#d7d2f0;background:rgba(3,4,10,.72)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(3,4,10,.28) 0%,rgba(3,4,10,.04) 22%,rgba(3,4,10,.06) 52%,rgba(3,4,10,.62) 80%,#03040a 100%)}
+.letter{position:absolute;left:0;right:0;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#d7d2f0;background:rgba(3,4,10,.5);white-space:nowrap}
 .letter.top{top:0}
 .letter.bot{bottom:0}
-.letter b{display:flex;align-items:center;gap:8px}
+.letter b{display:flex;align-items:center;gap:8px;min-width:0}
 .letter img{width:22px;height:22px;border-radius:50%}
+.letter .mid,.letter .long{display:none}
+@media(min-width:720px){.letter .mid,.letter .long{display:inline}}
 .live{display:inline-flex;align-items:center;gap:7px}
 .live i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 1.6s infinite}
 @keyframes pulse{50%{opacity:.35}}
@@ -223,7 +223,7 @@ footer a{color:var(--mute)}
    v.src=matchMedia('(max-width: 700px)').matches?'media/hero-480.mp4':'media/hero-720.mp4';v.preload='auto';v.muted=true;v.autoplay=true;var p=v.play();if(p&&p.catch)p.catch(function(){});})();</script>
   <div class="letter top">
     <b><img src="media/rook.png" alt="" width="22" height="22">Shawn &amp; Rook ♜</b>
-    <span>collapse.sys · reel 01</span>
+    <span class="mid">collapse.sys · reel 01</span>
     <span class="live"><i aria-hidden="true"></i>building in public</span>
   </div>
   <div class="hero-copy">
@@ -241,7 +241,7 @@ footer a{color:var(--mute)}
     <a class="pin" href="https://x.com/skyisbluespace/status/2104236217349050410" target="_blank" rel="noopener">Pinned · COLLAPSE, the film ↗</a>
   </div>
   <div class="letter bot">
-    <span>40.0 s · 1080p60 masters on Cinema</span>
+    <span class="long">40.0 s · 1080p60 masters on Cinema</span>
     <a href="#films" style="color:#d7d2f0;text-decoration:none">SCROLL</a>
     <span>@skyisbluespace</span>
   </div>
@@ -574,6 +574,8 @@ footer a{color:var(--mute)}
 <script>
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(location.hash){var jump=document.querySelector(location.hash);if(jump){document.documentElement.style.scrollBehavior='auto';jump.classList.add('in');jump.querySelectorAll('.rv').forEach(function(e){e.classList.add('in')});jump.scrollIntoView();}}
+  if(/[?&]shot=/.test(location.search)){document.querySelectorAll('.rv').forEach(function(e){e.classList.add('in')});}
   var narrow=matchMedia('(max-width: 899px)').matches, io='IntersectionObserver' in window;
   var hover=matchMedia('(hover:hover)').matches && !reduce;
 
